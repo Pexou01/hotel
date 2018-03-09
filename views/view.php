@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -18,7 +19,7 @@
     </head>
     <body>
         <h1>Réservation</h1>
-        <form method="POST" action="../modeles/modele.php.php" >
+        <form method="POST" action="../modeles/modele.php" >
         <br>
         <div>
             <label>Nom</label>
@@ -45,7 +46,9 @@
                <?php
       echo"<div name=info id=info>";
          include '../modeles/modele.php';
+         include '../modeles/resa.php';
       echo"</div>";
+      
         ?>
                
                

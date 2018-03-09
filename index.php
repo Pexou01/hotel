@@ -16,11 +16,10 @@
         </script>
     </head>
     <body>
-        
     <img src=pictures/hotel.jpg id=image alt=Kitten >
      <form method=post action=views/view.php>  
         <img src= pictures/bienvenue.jpg id=bienvenue>
-        <input type=submit action= views/view.php name=valider id=input value='Cliquez ici'>
+        <input type=submit action= views/view.php name=valider id=input1"." value='Cliquez ici'>
            </form> 
         <?php
       

@@ -1,4 +1,7 @@
 <?php
+
+ session_start();
+
 try {
     $base = new PDO('mysql:host=localhost; dbname=hotel_de_paris', 'root', '');
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -11,10 +14,10 @@ echo "<select name=info id=info multiple class=form-control>";
 while ($data = $retour->fetch()) {
     echo "<option> Nom de l'hotel : <br>" ." $data[name] , Adresse : $data[address], capacité de la chambre : $data[capacity], Sont prix : $data[price] euros</option>";
 
-    echo $data[address];
+   
 }
 
-           try {
+         try {
 
     $base->exec("SET CHARACTER SET utf8");
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,7 +31,6 @@ while ($data = $retour->fetch()) {
     $du = filter_input(INPUT_POST, "date");
     $au = filter_input(INPUT_POST, "date1");
 
-
     $cmd = $base->prepare('INSERT INTO  locations (nom, prenom, adresse, cp, ville, pays, info, du, au) VALUES (?,?,?,?,?,?,?,?,?)');
     $cmd->bindParam(1, $nom ,PDO::PARAM_STR);
     $cmd->bindParam(2, $prenom , PDO::PARAM_STR);
@@ -41,18 +43,22 @@ while ($data = $retour->fetch()) {
       $cmd->bindParam(9, $au , PDO::PARAM_STR);
      
     $cmd->execute();
-$base->exec("SET CHARACTER SET utf8");
+    
+ /**
+  * $base->exec("SET CHARACTER SET utf8");
     $retour1 = $base->query("SELECT * FROM locations ");
 while ($data = $retour1->fetch()){
 echo "<h1>Bonjour</h1> Mr  ".$data['prenom'].'   '.$data['nom']."<br>";
 echo "Votre adresse :   ".$data['adresse']."   "."Votre cp :  ".$data['cp']."votre ville :   ".$data['ville']."<br>";
 
 echo "Information sur votre réservation : ".$data['info']."<br>";
-echo "du : ".$data['du']."au : ".$data['au'];      
+echo "du : ".$data['du']."au : ".$data['au'];   
    }
+  */
+
 
 } catch (exception $e) {
-    $base = null;
+    echo "<form methode=POST action=resa.php><button type=submit value=Cliquez  ici pour récupéré votr e justificatif</form>";
     echo 'Erreur ' . $e->getMessage();
 }
          
